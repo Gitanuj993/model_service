@@ -38,15 +38,22 @@ Projects → Progress → Cost → Delay → Outcome
 ```
 3. Algorithm
 Algorithm decide karta hai ki patterns kaise learn kiye jayenge.
+
+
 Examples:
+```txt
 Linear Regression
 Decision Tree
 Random Forest
 XGBoost
 Neural Network
-4. Training
+```
+5. Training
+```txt
 Model predictions karta hai → actual answer se compare karta hai → apne internal parameters/weights adjust karta hai.
+```
 Conceptually:
+```txt
 Data
  ↓
 Prediction
@@ -58,8 +65,31 @@ Parameters update
 Better prediction
  ↓
 Repeat...
-Bahut baar.
-Computer ko ek hi baat हजार बार samjhani pade, क्योंकि apparently silicon bhi humans ki tarah repetition enjoy karta hai.
+```
+
+## Training approach aur ML algorithm
+
+### Training Approaches
+1. Supervised Learning
+2. Unsupervised Learning
+3. Semi-Supervised Learning
+4. Self-Supervised Learning
+5. Reinforcement Learning
+
+What would we use ?
+
+
+Supervised Learning with historical completed projects + feature engineering 
+   
+and 
+1. Linear Regression
+2. Logistic Regression
+3. Random Forest
+(optional)
+4. Decision Tree
+5. XGBoost / LightGBM
+6. Neural Networks
+
 
 ## Conclusion 
 Machine Learning = past data ke examples se mathematical patterns learn karke unseen/new data par prediction ya decision karna.
