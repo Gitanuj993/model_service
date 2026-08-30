@@ -28,6 +28,50 @@ ML Weights [ predict ]
 JSON Response [return Backend]
 ```
 
+### All Raw  Columns
+```txt
+raw_columns = [
+    "reporting_month",
+    "ministry",
+    "sector",
+    "sl_no",
+    "project_name",
+    "agency",
+    "project_code",
+    "legacy_ocms_code",
+    "pmgid",
+    "state",
+    "approval_start_date",
+    "revised_start_date",
+    "target_doc",
+    "revised_doc",
+    "original_cost_cr",
+    "revised_cost_cr",
+    "cumulative_expenditure_cr",
+    "physical_progress_pct"
+]
+```
+
+
+### Features
+```txt
+features = [
+    "ministry",
+    "sector",
+    "agency",
+    "state",
+    "original_cost_cr",
+    "cumulative_expenditure_cr",
+    "physical_progress_pct",
+    "financial_progress_pct",
+    "progress_gap",
+    "start_delay_months"
+]
+```
+
+
+
+
 
 
 
