@@ -99,10 +99,75 @@ cost_features = [
     "start_delay_months"
 ]
 
+target = "cost_overrun"
+
 ```
 
+## Features for TIME_OVER_RUN
+```txt
+time_features = [
+    "ministry",
+    "sector",
+    "agency",
+    "state",
+    "original_cost_cr",
+    "cumulative_expenditure_cr",
+    "physical_progress_pct",
+    "financial_progress_pct",
+    "progress_gap",
+    "start_delay_months"
+]
 
+target = "time_overrun"
 
+```
+## Features for Progress_Predict
+```txt
+progress_features = [
+    "ministry",
+    "sector",
+    "agency",
+    "state",
+    "original_cost_cr",
+    "cumulative_expenditure_cr",
+    "financial_progress_pct",
+    "start_delay_months"
+]
+
+target = "physical_progress_pct"
+```
+
+## Rule-based risk score
+
+$ subject to change $
+```txt
+risk_score = (
+    0.4 * cost_probability +
+    0.4 * time_probability +
+    0.2 * delay_score
+) * 100
+```
+
+Flags 
+```txt
+if risk_score < 30:
+    risk_level = "LOW"
+elif risk_score < 60:
+    risk_level = "MEDIUM"
+else:
+    risk_level = "HIGH"
+```
+
+## Possible API Response examples 
+```txt
+{
+  "cost_overrun_probability": 0.78,
+  "time_overrun_probability": 0.84,
+  "progress_prediction": 62.5,
+  "risk_score": 81.2,
+  "risk_level": "HIGH"
+}
+```
 
 
 
