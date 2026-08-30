@@ -5,8 +5,8 @@ import joblib
 app = Flask(__name__)
 
 # Load trained models
-cost_model = joblib.load("cost_overrun_model_v1.pkl")
-time_model = joblib.load("time_overrun_model_v1.pkl")
+cost_model = joblib.load("./models/cost_overrun_model_v1.pkl")
+time_model = joblib.load("./models/time_overrun_model_v1.pkl")
 
 features = [
     "ministry",
