@@ -63,14 +63,43 @@ features = [
     "original_cost_cr",
     "cumulative_expenditure_cr",
     "physical_progress_pct",
+
     "financial_progress_pct",
     "progress_gap",
     "start_delay_months"
 ]
 ```
+## Derived Features
+```txt
+financial_progress_pct = (
+    cumulative_expenditure_cr / original_cost_cr
+) * 100
 
+progress_gap = (
+    financial_progress_pct - physical_progress_pct
+)
 
+start_delay_months = (
+    revised_start_date - approval_start_date
+).days / 30.44
+```
 
+## Features for COSTOVERRUN
+```txt
+cost_features = [
+    "ministry",
+    "sector",
+    "agency",
+    "state",
+    "original_cost_cr",
+    "cumulative_expenditure_cr",
+    "physical_progress_pct",
+    "financial_progress_pct",
+    "progress_gap",
+    "start_delay_months"
+]
+
+```
 
 
 
