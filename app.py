@@ -100,6 +100,7 @@ def predict():
     print(" Risk score generated ")
 
     # Risk level
+    risk_level = ""
     if risk_score < 30:
         risk_level = "Low"
     elif risk_score < 70:
