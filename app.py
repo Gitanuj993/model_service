@@ -25,6 +25,15 @@ features = [
 print(" Features : ")
 print(features)
 
+@app.route("/")
+def home():
+    return jsonify({
+        "status": "ok",
+        "message": "ML Model API is running"
+    })
+
+@app.route("/predict", methods=["POST"])
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
