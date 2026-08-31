@@ -1,4 +1,18 @@
-# requirements.txt
+# Architecture 
+```txt
+requirements.txt
+    ↓
+dependencies install
+    ↓
+app.py
+    ↓
+models load
+    ↓
+API running
+
+```
+
+## requirements.txt
 
 ```txt
 Flask==3.1.2
