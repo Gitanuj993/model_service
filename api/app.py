@@ -3,11 +3,13 @@ import pandas as pd
 import joblib
 
 app = Flask(__name__)
+print("Server is running")
 
 # Load trained models
 cost_model = joblib.load("./models/cost_overrun_model_v1.pkl")
+print(" Cost Overrun Model Loaded Successfully" )
 time_model = joblib.load("./models/time_overrun_model_v1.pkl")
-
+print(" Time Overrun Model loaded Successfully")
 features = [
     "ministry",
     "sector",
@@ -20,6 +22,8 @@ features = [
     "progress_gap",
     "start_delay_months"
 ]
+print(" Features : ")
+print(features)
 
 
 @app.route("/predict", methods=["POST"])
@@ -27,9 +31,11 @@ def predict():
 
     # Client JSON
     project = request.get_json()
+    print(" project data is received ")
 
     # JSON → DataFrame
     df = pd.DataFrame([project])
+    print(" project is converted into Dataframe ")
 
     # Derived features
     df["financial_progress_pct"] = (
@@ -63,8 +69,11 @@ def predict():
          df["approval_start_date"].dt.month)
     )
 
+    print(" Derived Features added ")
+
     # Select model features
     X = df[features]
+    print(" feature selection done ")
 
     # Predictions
     cost_prediction = cost_model.predict(X)
@@ -72,12 +81,14 @@ def predict():
 
     cost_probability = cost_model.predict_proba(X)[:, 1]
     time_probability = time_model.predict_proba(X)[:, 1]
-
+    print(" Cost and Time Overrun Prediction Done ")
     # Risk score
     risk_score = (
         0.5 * cost_probability[0] +
         0.5 * time_probability[0]
     ) * 100
+
+    print(" Risk score generated ")
 
     # Risk level
     if risk_score < 30:
@@ -86,6 +97,7 @@ def predict():
         risk_level = "Medium"
     else:
         risk_level = "High"
+    print(" risk level determined " )
 
     return jsonify({
         "cost_overrun": int(cost_prediction[0]),
