@@ -116,7 +116,7 @@ def predict():
         "time_overrun_probability": round(float(time_probability[0]), 4),
 
         "risk_score": round(float(risk_score), 2),
-        "risk_level": risk_level
+        "risk_level": risk_level,
         "status": "success"
     })
 
