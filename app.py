@@ -108,6 +108,7 @@ def predict():
 
         "risk_score": round(float(risk_score), 2),
         "risk_level": risk_level
+        "status": "success"
     })
 
 
