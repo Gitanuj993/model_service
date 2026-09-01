@@ -32,7 +32,7 @@ def home():
         "message": "ML Model API is running"
     })
 
-@app.route("/predict", methods=["POST"])
+
 
 
 @app.route("/predict", methods=["POST"])
