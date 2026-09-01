@@ -21,36 +21,51 @@ Data Cleaning + Feature Engineering
 ## Simple Data Flow Pipeline 
 API Design 
 ```txt
-Backend API [IN]
+ API REQUEST JSON[IN]
    ↓
 ML Weights [ predict ]
    ↓
 JSON Response [return Backend]
 ```
 
-### All Raw  Columns
+### Expected JSON 
 ```txt
-raw_columns = [
-    "reporting_month",
-    "ministry",
-    "sector",
-    "sl_no",
-    "project_name",
-    "agency",
-    "project_code",
-    "legacy_ocms_code",
-    "pmgid",
-    "state",
-    "approval_start_date",
-    "revised_start_date",
-    "target_doc",
-    "revised_doc",
-    "original_cost_cr",
-    "revised_cost_cr",
-    "cumulative_expenditure_cr",
-    "physical_progress_pct"
-]
+project = {
+    "reporting_month": "2026-04",
+    "ministry": "Ministry of Civil Aviation",
+    "sector": "Aviation & Aviation Infrastructure",
+    "sl_no": 1,
+    "project_name": "...",
+    "agency": "Airport Authority of India [AAI]",
+    "project_code": 612786,
+    "legacy_ocms_code": "N04000106",
+    "pmgid": None,
+    "state": "Andhra Pradesh",
+    "approval_start_date": "03/2023",
+    "revised_start_date": "01/2024",
+    "target_doc": "01/2026",
+    "revised_doc": "07/2026",
+    "original_cost_cr": 265.91,
+    "revised_cost_cr": 265.91,
+    "cumulative_expenditure_cr": 129.07,
+    "physical_progress_pct": 65.0
+}
+
 ```
+
+## Expected API Response examples 
+```txt
+
+{"cost_overrun":0,
+"cost_overrun_probability":0.0672,
+"risk_level":"Medium",
+"risk_score":33.49,
+"time_overrun":1,
+"time_overrun_probability":0.6026}
+
+```
+
+
 
 
 ### Features
@@ -158,16 +173,39 @@ else:
     risk_level = "HIGH"
 ```
 
-## Possible API Response examples 
+## Json Examples 
 ```txt
-{
-  "cost_overrun_probability": 0.78,
-  "time_overrun_probability": 0.84,
-  "progress_prediction": 62.5,
-  "risk_score": 81.2,
-  "risk_level": "HIGH"
+import requests
+
+url = "https://model-service-dev-6h80.onrender.com/predict"
+
+# json me jayega
+project = {
+    "reporting_month": "2026-04",
+    "ministry": "Ministry of Civil Aviation",
+    "sector": "Aviation & Aviation Infrastructure",
+    "sl_no": 1,
+    "project_name": "...",
+    "agency": "Airport Authority of India [AAI]",
+    "project_code": 612786,
+    "legacy_ocms_code": "N04000106",
+    "pmgid": None,
+    "state": "Andhra Pradesh",
+    "approval_start_date": "03/2023",
+    "revised_start_date": "01/2024",
+    "target_doc": "01/2026",
+    "revised_doc": "07/2026",
+    "original_cost_cr": 265.91,
+    "revised_cost_cr": 265.91,
+    "cumulative_expenditure_cr": 129.07,
+    "physical_progress_pct": 65.0
 }
+response = requests.post(url, json=project)
+print(response.status_code)
+print(response.text)
 ```
+
+
 
 
 
