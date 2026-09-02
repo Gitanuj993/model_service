@@ -28,6 +28,22 @@ ML Weights [ predict ]
 JSON Response [return Backend]
 ```
 
+## Getting Started 
+Copy The Repository 
+```txt
+git clone https://github.com/Gitanuj993/model_service
+cd model_service
+```
+install dependencies 
+```txt
+pip install -r requirements.txt
+```
+
+start the server 
+```txt
+gunicorn app.main:app
+```
+
 ### Expected JSON 
 ```txt
 project = {
